@@ -7,11 +7,11 @@ Once logged into AWS with the provided credentials, create an EC 2 instance
 - Pick the "Ubuntu Server 16.04 LTS (HVM), SSD Volume Type" machine image
 - Leave t2.micro selected and click "Review and Launch"
 - Across from Security Groups select "Edit security groups"
-- Set "Security group name" field to "<Firstname>-<Lastname>-Wiz"
+- Set "Security group name" field to "\<Firstname>-\<Lastname>-Wiz"
 - Click "Review and Launch"
 - Click "Launch"
 - When prompted select "Create a new key pair" in the first selection box
-- Name the keypair "<FirstName>-<LastName>-Keys"
+- Name the keypair "\<FirstName>-\<LastName>-Keys"
 - Click "Download Key Pair"
 - Save the file
 - Once launched click "View Instances"
@@ -19,7 +19,7 @@ Once logged into AWS with the provided credentials, create an EC 2 instance
 
 ## Connecting to your instance
 - Select your instance from the list and locate the "IPv4 Public IP" field, make note of this number
-- Open a terminal and navigate to your downloaded key (It should be named "<FirstName>-<LastName>-Keys.pem")
+- Open a terminal and navigate to your downloaded key (It should be named "\<FirstName>-\<LastName>-Keys.pem")
 - Move these to your local `.ssh` folder
 ```
 mv -v <KeyPair.pem> ~/.ssh/
@@ -70,7 +70,7 @@ sudo apt upgrade
 ```
 sudo apt install nginx
 ```
-- Reopen the AWS control panel and select your servers "Security Groups" entry. It will be named "<FirstName>-<LastName>-wiz"
+- Reopen the AWS control panel and select your servers "Security Groups" entry. It will be named "\<FirstName>-\<LastName>-wiz"
 - Select the "Inbound" tab
 - Click "Edit" then "Add Rule"
 - Enter port 80
@@ -180,14 +180,14 @@ sudo service nginx restart
 ```
 sudo service nginx status
 ```
-- Access and login to our new web interface at http://<Your machine IPv4>/
+- Access and login to our new web interface at `http://<Your machine IPv4>/`
 
 ## Linking DNS
 - Login to Cloudflare with the credentials provided
 - Under DNS add an A record with your own name in the name field and your server IP address in the value field
 - Deselect the cloud icon so the arrow points around the cloud not through it
 - Add this record
-- Visit http://<Your name>.scuacm.tk/ and see that it links to your phpMyAdmin page
+- Visit `http://<Your name>.scuacm.tk/` and see that it links to your phpMyAdmin page
 
 ## Acquire SSL Certs
 - Add Certbot as a trusted package supplier
@@ -207,7 +207,7 @@ sudo apt install python-certbot-nginx
 sudo certbot --nginx
 ```
 - Enter acm-keys@dallen.io for the email
-- When prompted, enter <Your name>.scuacm.tk as the domain you would like to validate
+- When prompted, enter \<Your name>.scuacm.tk as the domain you would like to validate
 - When prompted to add redirects select `1`, no redirect
 
 ## Configure NGINX to serve the certs
@@ -242,7 +242,7 @@ server {
 sudo nginx -t
 sudo service nginx restart
 ```
-- Check https://<Your name>.scuacm.tk/
+- Check `https://<Your name>.scuacm.tk/`
 - Marvel at the security!
 
 ## Setup a redirect to the new SSL domain
